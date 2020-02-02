@@ -10,7 +10,10 @@
   body {
     font-family: 'Roboto', sans-serif;
     -webkit-font-smoothing: antialiased;
-    background-color: #27359c;
-    background-image: url("https://www.transparenttextures.com/patterns/arches.png");
+
+    &.home {
+      background-color: #27359c;
+      background-image: url("https://www.transparenttextures.com/patterns/arches.png");
+    }
   }
 </style>

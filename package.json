@@ -10,6 +10,7 @@
   "dependencies": {
     "core-js": "^3.4.4",
     "vue": "^2.6.10",
+    "vue-body-class": "^3.0.2",
     "vue-router": "^3.1.3"
   },
   "devDependencies": {
