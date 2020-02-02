@@ -1,15 +1,15 @@
 <template>
-  <Homepage />
+  <div>
+    <h1>Homepage</h1>
+    <Button text="Go and create your README file" link="/create" />
+  </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import Homepage from '@/components/Homepage.vue';
+import Button from '@/components/Button.vue';
 
 export default {
   name: 'home',
-  components: {
-    Homepage,
-  },
+  components: { Button },
 };
 </script>
