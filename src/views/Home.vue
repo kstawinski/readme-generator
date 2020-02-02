@@ -12,9 +12,8 @@
         link="/create"
         class="main-button"
       />
-
-      <Footer />
     </div>
+    <Footer />
   </div>
 </template>
 
@@ -48,9 +47,15 @@ export default {
 
     &-text {
       line-height: 1.35;
-      font-size: 24px;
+      font-size: 18px;
       font-weight: 300;
       opacity: .6;
+      padding: 0 20px;
+
+      // iPad screen width
+      @media (min-width: 768px) {
+        font-size: 24px;
+      }
     }
 
     &-button { margin-top: 35px; }
