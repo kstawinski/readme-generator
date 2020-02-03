@@ -16,45 +16,13 @@
   </div>
 
     <div class="page-wrapper">
-      <div class="page-column page-column_separator page-preview">
-        <vue-markdown>i am a ~~tast~~ **test**.</vue-markdown>
-      </div>
-      <div class="page-column">
-          <div class="step">Step {{ step }} / {{ lastStep }}</div>
-
-          <Input
-            label="Name of your project"
-            name="project_name"
-            type="text"
-            v-if="step === 1"
-          />
-
-          <Input
-            label="Description"
-            name="project_description"
-            type="text"
-            v-if="step === 2"
-          />
-
-          <Input
-            label="Repository link"
-            name="project_link"
-            type="text"
-            v-if="step === 3"
-          />
-
-          <div v-if="step === 4">All fields completed.</div>
-
-          <button
-            class="navButton navButton-secondary"
-            v-on:click="previousStep()"
-            v-if="step !== 1">Previous step</button>
-
-            <button
-              class="navButton"
-              v-on:click="nextStep()"
-              v-if="step !== lastStep">Next step</button>
-      </div>
+      <ul class="steps">
+        <li class="steps-item steps-item_active">1</li>
+        <li class="steps-item">2</li>
+        <li class="steps-item">3</li>
+        <li class="steps-item">4</li>
+        <li class="steps-item">5</li>
+      </ul>
     </div>
 
   </div>
@@ -62,16 +30,20 @@
 
 <script>
 import Button from '@/components/Button.vue';
-import Input from '@/components/Input.vue';
-import VueMarkdown from 'vue-markdown';
+// import VueMarkdown from 'vue-markdown';
 
 export default {
   name: 'Create',
-  components: { Button, Input, VueMarkdown },
+  components: { Button },
   data() {
     return {
       step: 1,
       lastStep: 4,
+      form: {
+        name: '',
+        description: '',
+        link: '',
+      },
     };
   },
   methods: {
@@ -121,45 +93,64 @@ strong { font-weight: bold; }
   &-wrapper {
     display: flex;
   }
-  &-column {
-    padding: 25px;
-    width: 50%;
+}
 
-    &_separator {
-      border-right: 1px solid lightgray;
+.steps {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin: 40px 0;
+
+  &-item {
+    width: 50px;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 50%;
+    background: #eaeaea;
+    margin: 0 20px;
+    font-weight: 600;
+    color: #7b7b7b;
+    position: relative;
+
+    &:not(:last-child):after {
+      height: 2px;
+      width: 24px;
+      content: '';
+      position: absolute;
+      background: #f5f5f5;
+      z-index: -1;
+      top: 50%;
+      right: -32px;
+    }
+
+    &_active {
+      background: #26359c;
+      color: #fff;
     }
   }
-  // &-preview > div > p {
-  //   strong { font-weight: bold; }
-  // }
 }
-
-.step {
-  font-weight: 600;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
-
-.navButton {
-  font-family: 'Roboto';
-  font-size: 16px;
-  margin: 20px 5px 0 0;
-  background: #26359c;
-  border: 0;
-  border-radius: 3px;
-  padding: 15px 35px;
-  color: #fff;
-  font-weight: 600;
-  cursor: pointer;
-  outline: 0;
-
-  &-secondary {
-    background: #e2e2e2;
-    color: #656565;
-  }
-
-  &:hover {
-    box-shadow: 0 3px 1px #0000000a;
-  }
-}
+// .navButton {
+//   font-family: 'Roboto';
+//   font-size: 16px;
+//   margin: 20px 5px 0 0;
+//   background: #26359c;
+//   border: 0;
+//   border-radius: 3px;
+//   padding: 15px 35px;
+//   color: #fff;
+//   font-weight: 600;
+//   cursor: pointer;
+//   outline: 0;
+//
+//   &-secondary {
+//     background: #e2e2e2;
+//     color: #656565;
+//   }
+//
+//   &:hover {
+//     box-shadow: 0 3px 1px #0000000a;
+//   }
+// }
 </style>
