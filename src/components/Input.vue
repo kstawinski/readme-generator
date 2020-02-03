@@ -19,4 +19,21 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
+.input {
+  &-field {
+    width: 100%;
+    margin: 7px 0;
+    border: none;
+    border-bottom: 1px solid #e0e0e0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    padding: 10px 5px;
+    color: #2f2f2f;
+    outline: 0;
+
+    &:focus {
+      border-bottom-color: #27359c;
+    }
+  }
+}
 </style>
