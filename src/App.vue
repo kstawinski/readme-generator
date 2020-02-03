@@ -16,4 +16,8 @@
       background-image: url("https://www.transparenttextures.com/patterns/arches.png");
     }
   }
+  .container {
+    width: 90%;
+    margin: 0 auto;
+  }
 </style>
