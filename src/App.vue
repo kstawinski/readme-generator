@@ -13,7 +13,7 @@
 
     &.home {
       background-color: #27359c;
-      background-image: url("https://www.transparenttextures.com/patterns/arches.png");
+      background-image: url('assets/pattern.png');
     }
   }
   .container {
