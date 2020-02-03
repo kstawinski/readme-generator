@@ -1,6 +1,6 @@
 <template>
   <div class="input">
-    <label class="input-label" v-bind:for="name">{{ label }}</label>
+    <!-- <label class="input-label" v-bind:for="name">{{ label }}</label> -->
     <input class="input-field" v-bind:type="type" v-bind:name="name" v-bind:id="name">
   </div>
 </template>
@@ -9,7 +9,7 @@
 export default {
   name: 'Input',
   props: {
-    label: String,
+    // label: String,
     name: String,
     type: String,
     placeholder: String,
@@ -30,6 +30,7 @@ export default {
     padding: 10px 5px;
     color: #2f2f2f;
     outline: 0;
+    text-align: center;
 
     &:focus {
       border-bottom-color: #27359c;

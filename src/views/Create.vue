@@ -23,6 +23,17 @@
         <li class="steps-item">4</li>
         <li class="steps-item">5</li>
       </ul>
+
+      <div class="form">
+        <div class="form-title">Project name</div>
+
+        <!-- eslint-disable max-len -->
+        <p class="form-description">Please enter name of your projects. It will be your README's file title.</p>
+
+        <Input />
+
+        <button class="navButton">Next step</button>
+      </div>
     </div>
 
   </div>
@@ -30,11 +41,12 @@
 
 <script>
 import Button from '@/components/Button.vue';
+import Input from '@/components/Input.vue';
 // import VueMarkdown from 'vue-markdown';
 
 export default {
   name: 'Create',
-  components: { Button },
+  components: { Button, Input },
   data() {
     return {
       step: 1,
@@ -91,7 +103,7 @@ strong { font-weight: bold; }
 
 .page {
   &-wrapper {
-    display: flex;
+    // display: flex;
   }
 }
 
@@ -131,26 +143,42 @@ strong { font-weight: bold; }
     }
   }
 }
-// .navButton {
-//   font-family: 'Roboto';
-//   font-size: 16px;
-//   margin: 20px 5px 0 0;
-//   background: #26359c;
-//   border: 0;
-//   border-radius: 3px;
-//   padding: 15px 35px;
-//   color: #fff;
-//   font-weight: 600;
-//   cursor: pointer;
-//   outline: 0;
-//
-//   &-secondary {
-//     background: #e2e2e2;
-//     color: #656565;
-//   }
-//
-//   &:hover {
-//     box-shadow: 0 3px 1px #0000000a;
-//   }
-// }
+.navButton {
+  font-family: 'Roboto';
+  font-size: 16px;
+  margin: 20px 5px 0 0;
+  background: #26359c;
+  border: 0;
+  border-radius: 3px;
+  padding: 15px 35px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  outline: 0;
+
+  &-secondary {
+    background: #e2e2e2;
+    color: #656565;
+  }
+
+  &:hover {
+    box-shadow: 0 3px 1px #0000000a;
+  }
+}
+
+.form {
+  text-align: center;
+  width: 40%;
+  margin: 0 auto;
+
+  &-title {
+    margin: 20px 0 10px 0;
+    font-size: 26px;
+    font-weight: 300;
+  }
+
+  &-description {
+    margin-bottom: 40px;
+  }
+}
 </style>
