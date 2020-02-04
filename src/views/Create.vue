@@ -3,23 +3,29 @@
     <PageHeader title="Create a file" />
 
     <div class="page-wrapper">
-      <ul class="steps">
+      <!-- <ul class="steps">
         <li class="steps-item steps-item_active">1</li>
         <li class="steps-item">2</li>
         <li class="steps-item">3</li>
         <li class="steps-item">4</li>
         <li class="steps-item">5</li>
+      </ul> -->
+
+      <ul class="steps">
+        <li
+          v-for="step in steps"
+          v-bind:key="step.id"
+          :class="[{ 'steps-item_active': currentStep == step.stepId }, 'steps-item']">{{ step.id }}
+        </li>
+
       </ul>
 
       <div class="form">
-        <div class="form-title">Project name</div>
-
-        <!-- eslint-disable max-len -->
-        <p class="form-description">Please enter name of your projects. It will be your README's file title.</p>
-
+        <div class="form-title">{{ steps[currentStep].title }}</div>
+        <p class="form-description">{{ steps[currentStep].description }}</p>
         <Input />
 
-        <button class="navButton">Next step</button>
+        <button class="navButton" @click="nextStep()">Next step</button>
       </div>
     </div>
 
@@ -36,23 +42,31 @@ export default {
   components: { PageHeader, Input },
   data() {
     return {
-      step: 1,
-      lastStep: 4,
-      form: {
-        name: '',
-        description: '',
-        link: '',
-      },
+      currentStep: 0,
+      steps: [
+        {
+          id: 1,
+          stepId: 0,
+          title: 'Project name',
+          description: 'Please enter name of your project. It will be your README file title.',
+        }, {
+          id: 2,
+          stepId: 1,
+          title: 'Repository link',
+          description: 'Link to your project GitHub repository.',
+        },
+      ],
+      variable: 'string',
     };
   },
   methods: {
     nextStep() {
-      console.log(`Current step ${this.step}. Going to ${this.step + 1} step.`);
-      this.step += 1;
+      console.log(`Current step ${this.currentStep}. Going to ${this.currentStep + 1} step.`);
+      this.currentStep += 1;
     },
     previousStep() {
-      console.log(`Current step ${this.step}. Going to ${this.step - 1} step.`);
-      this.step -= 1;
+      console.log(`Current step ${this.currentStep}. Going to ${this.currentStep - 1} step.`);
+      this.currentStep -= 1;
     },
   },
 };
