@@ -23,7 +23,7 @@
       <div class="form">
         <div class="form-title">{{ steps[currentStep].title }}</div>
         <p class="form-description">{{ steps[currentStep].description }}</p>
-        <Input />
+        <Input :data="steps" v-bind:currentStep="currentStep" />
 
         <button
           v-if="currentStep !== 0"
@@ -53,11 +53,13 @@ export default {
           stepId: 0,
           title: 'Project name',
           description: 'Please enter name of your project. It will be your README file title.',
+          inputName: 'prName',
         }, {
           id: 2,
           stepId: 1,
           title: 'Repository link',
           description: 'Link to your project GitHub repository.',
+          inputName: 'prRepo',
         },
       ],
       variable: 'string',

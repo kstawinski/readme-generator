@@ -1,7 +1,10 @@
 <template>
   <div class="input">
     <!-- <label class="input-label" v-bind:for="name">{{ label }}</label> -->
-    <input class="input-field" v-bind:type="type" v-bind:name="name" v-bind:id="name">
+    <input class="input-field"
+      v-bind:type="type"
+      v-bind:name="this.data[this.currentStep].inputName"
+      v-bind:id="this.data[this.currentStep].inputName">
   </div>
 </template>
 
@@ -13,6 +16,8 @@ export default {
     name: String,
     type: String,
     placeholder: String,
+    currentStep: String,
+    data: Object,
   },
 };
 </script>
