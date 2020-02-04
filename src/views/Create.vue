@@ -25,6 +25,10 @@
         <p class="form-description">{{ steps[currentStep].description }}</p>
         <Input />
 
+        <button
+          v-if="currentStep !== 0"
+          class="navButton navButton-secondary"
+          @click="previousStep()">Previous step</button>
         <button class="navButton" @click="nextStep()">Next step</button>
       </div>
     </div>
