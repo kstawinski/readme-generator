@@ -1,19 +1,6 @@
 <template>
   <div>
-    <div class="hero">
-    <div class="container hero-wrapper">
-      <div class="hero-content">
-        <h1 class="hero-title">README Generator</h1>
-        <h2 class="hero-subtitle">Create a file</h2>
-      </div>
-
-      <Button
-        text="Back to homepage"
-        link="/"
-        class="hero-button"
-      />
-    </div>
-  </div>
+    <PageHeader title="Create a file" />
 
     <div class="page-wrapper">
       <ul class="steps">
@@ -40,13 +27,13 @@
 </template>
 
 <script>
-import Button from '@/components/Button.vue';
 import Input from '@/components/Input.vue';
+import PageHeader from '@/components/PageHeader.vue';
 // import VueMarkdown from 'vue-markdown';
 
 export default {
   name: 'Create',
-  components: { Button, Input },
+  components: { PageHeader, Input },
   data() {
     return {
       step: 1,
@@ -73,34 +60,6 @@ export default {
 
 <style lang="scss" scoped>
 strong { font-weight: bold; }
-.hero {
-  background-color: #27359c;
-  background-image: url('../assets/pattern.png');
-
-  &-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  &-content {
-    color: #fff;
-    padding: 50px 0;
-  }
-
-  &-title {
-    margin-bottom: 5px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-
-  &-subtitle {
-    font-size: 30px;
-    font-weight: 300;
-  }
-}
-
 .page {
   &-wrapper {
     // display: flex;
