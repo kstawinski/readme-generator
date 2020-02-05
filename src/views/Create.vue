@@ -3,24 +3,34 @@
     <PageHeader title="Create a file" />
 
     <div class="page-wrapper">
-      <ul class="steps">
-        <li
-          v-for="step in steps"
-          v-bind:key="step.id"
-          :class="[{ 'steps-item_active': currentStep == step.stepId }, 'steps-item']">{{ step.id }}
-        </li>
-      </ul>
+      <div v-if="formActive == true">
+        <ul class="steps">
+          <li
+            v-for="step in steps"
+            v-bind:key="step.id"
+            :class="[
+              { 'steps-item_active': currentStep == step.stepId },
+              'steps-item'
+            ]">{{ step.id }}
+          </li>
+        </ul>
 
-      <div class="form">
-        <div class="form-title">{{ steps[currentStep].title }}</div>
-        <p class="form-description">{{ steps[currentStep].description }}</p>
-        <Input :data="steps" v-bind:currentStep="currentStep" />
+        <div class="form">
+          <div>
+            <div class="form-title">{{ steps[currentStep].title }}</div>
+            <p class="form-description">{{ steps[currentStep].description }}</p>
+            <Input :data="steps" v-bind:currentStep="currentStep" />
 
-        <button class="navButton" @click="nextStep()">Next step</button>
-        <button
-          v-if="currentStep !== 0"
-          class="navButton navButton-secondary"
-          @click="previousStep()">Previous step</button>
+            <button class="navButton" @click="nextStep()">Next step</button>
+            <button
+              v-if="currentStep !== 0"
+              class="navButton navButton-secondary"
+              @click="previousStep()">Previous step</button>
+            </div>
+        </div>
+      </div>
+      <div v-else class="success">
+        <FormSuccess />
       </div>
     </div>
 
@@ -30,14 +40,16 @@
 <script>
 import Input from '@/components/Input.vue';
 import PageHeader from '@/components/PageHeader.vue';
+import FormSuccess from '@/components/FormSuccess.vue';
 // import VueMarkdown from 'vue-markdown';
 
 export default {
   name: 'Create',
-  components: { PageHeader, Input },
+  components: { PageHeader, Input, FormSuccess },
   data() {
     return {
       currentStep: 0,
+      formActive: true,
       steps: [
         {
           id: 1,
@@ -59,12 +71,28 @@ export default {
   },
   methods: {
     nextStep() {
-      // console.log(`Current step ${this.currentStep}. Going to ${this.currentStep + 1} step.`);
-      this.currentStep += 1;
+      // If form is actually active
+      if (this.formActive) {
+        if (this.isCompleted() === false) {
+          // Go to the next step
+          this.currentStep += 1;
+        }
+      }
     },
     previousStep() {
-      // console.log(`Current step ${this.currentStep}. Going to ${this.currentStep - 1} step.`);
+      // Go to the previous step
       this.currentStep -= 1;
+
+      // Check: is form completed
+      this.isCompleted();
+    },
+    isCompleted() {
+      // If form was completed
+      if ((this.currentStep + 1) !== this.steps.length) return false;
+
+      // If not, set form activity to false and return true (form completed)
+      this.formActive = false;
+      return true;
     },
   },
 };
