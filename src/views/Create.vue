@@ -3,21 +3,12 @@
     <PageHeader title="Create a file" />
 
     <div class="page-wrapper">
-      <!-- <ul class="steps">
-        <li class="steps-item steps-item_active">1</li>
-        <li class="steps-item">2</li>
-        <li class="steps-item">3</li>
-        <li class="steps-item">4</li>
-        <li class="steps-item">5</li>
-      </ul> -->
-
       <ul class="steps">
         <li
           v-for="step in steps"
           v-bind:key="step.id"
           :class="[{ 'steps-item_active': currentStep == step.stepId }, 'steps-item']">{{ step.id }}
         </li>
-
       </ul>
 
       <div class="form">
@@ -54,24 +45,25 @@ export default {
           title: 'Project name',
           description: 'Please enter name of your project. It will be your README file title.',
           inputName: 'prName',
+          placeholder: 'readme-generator',
         }, {
           id: 2,
           stepId: 1,
           title: 'Repository link',
           description: 'Link to your project GitHub repository.',
           inputName: 'prRepo',
+          placeholder: 'https://github.com/kstawinski/readme-generator',
         },
       ],
-      variable: 'string',
     };
   },
   methods: {
     nextStep() {
-      console.log(`Current step ${this.currentStep}. Going to ${this.currentStep + 1} step.`);
+      // console.log(`Current step ${this.currentStep}. Going to ${this.currentStep + 1} step.`);
       this.currentStep += 1;
     },
     previousStep() {
-      console.log(`Current step ${this.currentStep}. Going to ${this.currentStep - 1} step.`);
+      // console.log(`Current step ${this.currentStep}. Going to ${this.currentStep - 1} step.`);
       this.currentStep -= 1;
     },
   },
@@ -85,7 +77,6 @@ strong { font-weight: bold; }
     // display: flex;
   }
 }
-
 .steps {
   display: flex;
   width: 100%;
@@ -156,7 +147,6 @@ strong { font-weight: bold; }
     box-shadow: 0 3px 1px #0000000a;
   }
 }
-
 .form {
   text-align: center;
   width: 40%;

@@ -4,7 +4,8 @@
     <input class="input-field"
       v-bind:type="type"
       v-bind:name="this.data[this.currentStep].inputName"
-      v-bind:id="this.data[this.currentStep].inputName">
+      v-bind:id="this.data[this.currentStep].inputName"
+      v-bind:placeholder="this.data[this.currentStep].placeholder">
   </div>
 </template>
 
