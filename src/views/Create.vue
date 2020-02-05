@@ -25,11 +25,11 @@
         <p class="form-description">{{ steps[currentStep].description }}</p>
         <Input :data="steps" v-bind:currentStep="currentStep" />
 
+        <button class="navButton" @click="nextStep()">Next step</button>
         <button
           v-if="currentStep !== 0"
           class="navButton navButton-secondary"
           @click="previousStep()">Previous step</button>
-        <button class="navButton" @click="nextStep()">Next step</button>
       </div>
     </div>
 
@@ -125,7 +125,7 @@ strong { font-weight: bold; }
 .navButton {
   font-family: 'Roboto';
   font-size: 16px;
-  margin: 20px 5px 0 0;
+  margin: 20px auto 0 auto;
   background: #26359c;
   border: 0;
   border-radius: 3px;
@@ -134,10 +134,22 @@ strong { font-weight: bold; }
   font-weight: 600;
   cursor: pointer;
   outline: 0;
+  display: block;
 
   &-secondary {
-    background: #e2e2e2;
-    color: #656565;
+    background: #eaeaea;
+    color: #737373;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 10px 20px;
+    margin: 10px auto;
+    opacity: .7;
+    transition: opacity .15s;
+    transition-timing-function: linear;
+
+      &:hover {
+        opacity: 1;
+      }
   }
 
   &:hover {
