@@ -16,8 +16,8 @@ export default {
     name: String,
     type: String,
     placeholder: String,
-    currentStep: String,
-    data: Object,
+    currentStep: Number,
+    data: Array,
   },
 };
 </script>
