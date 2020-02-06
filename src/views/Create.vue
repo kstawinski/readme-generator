@@ -21,7 +21,16 @@
             <p class="form-description">{{ steps[currentStep].description }}</p>
             <Input :data="steps" v-bind:currentStep="currentStep" />
 
-            <button class="navButton" @click="nextStep()">Next step</button>
+            <button
+              class="navButton"
+              :class="[{ 'navButton-success': isLastStep() }, 'navButton']"
+              @click="nextStep()">
+                <div v-if="isLastStep()" class="navButton-flex">
+                  <SuccessIcon color="#fff" class="navButton-icon"/>
+                  <div>Download file</div>
+                </div>
+                <div v-else>Next step</div>
+            </button>
             <button
               v-if="currentStep !== 0"
               class="navButton navButton-secondary"
@@ -41,11 +50,14 @@
 import Input from '@/components/Input.vue';
 import PageHeader from '@/components/PageHeader.vue';
 import FormSuccess from '@/components/FormSuccess.vue';
+import SuccessIcon from '@/components/SuccessIcon.vue';
 // import VueMarkdown from 'vue-markdown';
 
 export default {
   name: 'Create',
-  components: { PageHeader, Input, FormSuccess },
+  components: {
+    PageHeader, Input, FormSuccess, SuccessIcon,
+  },
   data() {
     return {
       currentStep: 0,
@@ -93,6 +105,10 @@ export default {
       // If not, set form activity to false and return true (form completed)
       this.formActive = false;
       return true;
+    },
+    isLastStep() {
+      if ((this.currentStep + 1) === this.steps.length) return true;
+      return false;
     },
   },
 };
@@ -169,6 +185,20 @@ strong { font-weight: bold; }
       &:hover {
         opacity: 1;
       }
+  }
+
+  &-success {
+    background: #62b762;
+    display: flex;
+    padding: 15px 25px;
+  }
+  &-flex {
+    display: flex;
+  }
+  &-icon {
+    width: 20px;
+    margin-right: 10px;
+    // opacity: .5;
   }
 
   &:hover {
