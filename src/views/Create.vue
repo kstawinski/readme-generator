@@ -65,7 +65,7 @@ export default {
   data() {
     return {
       currentStep: 0,
-      formActive: false,
+      formActive: true,
       steps: [
         {
           id: 1,
