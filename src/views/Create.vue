@@ -30,8 +30,14 @@
               :class="[{ 'navButton-success': isLastStep() }, 'navButton']"
               @click="nextStep()">
                 <div v-if="isLastStep()" class="navButton-flex">
-                  <SuccessIcon color="#fff" class="navButton-icon"/>
-                  <div>Download file</div>
+                  <!-- <SuccessIcon color="#fff" class="navButton-icon"/> -->
+                  <div>
+                    <span
+                      class="navButton-icon fas fa-cloud-download-alt"
+                      aria-hidden="true">
+                    </span>
+                    <span>Download file</span>
+                  </div>
                 </div>
                 <div v-else>Next step</div>
             </button>
@@ -54,14 +60,11 @@
 import Input from '@/components/Input.vue';
 import PageHeader from '@/components/PageHeader.vue';
 import FormSuccess from '@/components/FormSuccess.vue';
-import SuccessIcon from '@/components/SuccessIcon.vue';
 // import VueMarkdown from 'vue-markdown';
 
 export default {
   name: 'Create',
-  components: {
-    PageHeader, Input, FormSuccess, SuccessIcon,
-  },
+  components: { PageHeader, Input, FormSuccess },
   data() {
     return {
       currentStep: 0,
