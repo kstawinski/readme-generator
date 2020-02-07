@@ -10,7 +10,7 @@
     </div>
     <div class="success-container success-container_code">
       <div class="success-buttonsRow">
-        <button class="button">Download</button>
+        <button class="button"><span class="button-icon fas fa-cloud-download-alt" aria-hidden="true"></span>Download</button>
         <button class="button button-secondary">I want to copy</button>
       </div>
       <p class="success-code">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta rem dolorem numquam perspiciatis unde, doloribus quo omnis dignissimos aliquid culpa nobis qui fuga assumenda non voluptatibus quidem, iste quia! Accusantium.
@@ -108,6 +108,9 @@ export default {
           color: #fff;
         }
     }
+    &-icon {
+      margin-right: 8px;
+    }
 }
 .footer {
   text-align: center;
@@ -117,6 +120,9 @@ export default {
 
     &-link {
       color: #62b762;
+    }
+    &-icon {
+      margin-right: 3px;
     }
 }
 </style>
