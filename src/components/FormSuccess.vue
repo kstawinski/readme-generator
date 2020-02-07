@@ -91,6 +91,7 @@ export default {
   padding: 10px 18px;
   border-radius: 3px;
   transition: .3s all;
+  cursor: pointer;
 
     &:not(:last-child) {
       margin-right: 10px;
