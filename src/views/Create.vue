@@ -2,6 +2,10 @@
   <div>
     <PageHeader title="Create a file" />
 
+    <div v-if="formActive == false">
+      <FormSuccess />
+    </div>
+
     <div class="page-wrapper">
       <div v-if="formActive == true">
         <ul class="steps">
@@ -38,9 +42,9 @@
             </div>
         </div>
       </div>
-      <div v-else class="success">
+      <!-- <div v-else class="success">
         <FormSuccess />
-      </div>
+      </div> -->
     </div>
 
   </div>
@@ -61,7 +65,7 @@ export default {
   data() {
     return {
       currentStep: 0,
-      formActive: true,
+      formActive: false,
       steps: [
         {
           id: 1,
@@ -157,6 +161,21 @@ strong { font-weight: bold; }
     }
   }
 }
+.form {
+  text-align: center;
+  width: 40%;
+  margin: 0 auto;
+
+  &-title {
+    margin: 20px 0 10px 0;
+    font-size: 26px;
+    font-weight: 300;
+  }
+
+  &-description {
+    margin-bottom: 40px;
+  }
+}
 .navButton {
   font-family: 'Roboto';
   font-size: 16px;
@@ -203,21 +222,6 @@ strong { font-weight: bold; }
 
   &:hover {
     box-shadow: 0 3px 1px #0000000a;
-  }
-}
-.form {
-  text-align: center;
-  width: 40%;
-  margin: 0 auto;
-
-  &-title {
-    margin: 20px 0 10px 0;
-    font-size: 26px;
-    font-weight: 300;
-  }
-
-  &-description {
-    margin-bottom: 40px;
   }
 }
 </style>
