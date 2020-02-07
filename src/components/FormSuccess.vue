@@ -1,7 +1,7 @@
 <template>
   <div class="success">
     <div class="success-container">
-      <img class="success-image" src="../assets/success.svg">
+      <SuccessIcon color="#62b762" class="success-image" />
       <p class="success-title">We got it!</p>
       <!-- eslint-disable max-len -->
       <p class="success-text">Your README.md file was generated successfully. Click the button below and download your file.</p>
@@ -10,8 +10,11 @@
 </template>
 
 <script>
+import SuccessIcon from '@/components/SuccessIcon.vue';
+
 export default {
   name: 'FormSuccess',
+  components: { SuccessIcon },
 };
 </script>
 
