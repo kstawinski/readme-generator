@@ -14,9 +14,9 @@
     <div class="success-container success-container_code">
       <div class="success-buttonsRow">
         <button class="button"><span class="button-icon fas fa-cloud-download-alt" aria-hidden="true"></span>Download</button>
-        <button class="button button-secondary">I want to copy</button>
+        <button class="button button-secondary" @click="copyToClipboard()">I want to copy</button>
       </div>
-      <p class="success-code">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta rem dolorem numquam perspiciatis unde, doloribus quo omnis dignissimos aliquid culpa nobis qui fuga assumenda non voluptatibus quidem, iste quia! Accusantium.
+      <p class="success-code" id="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta rem dolorem numquam perspiciatis unde, doloribus quo omnis dignissimos aliquid culpa nobis qui fuga assumenda non voluptatibus quidem, iste quia! Accusantium.
       Quas deleniti nam dolorum doloribus, blanditiis reprehenderit ipsam modi mollitia officiis praesentium tempora, eum, ratione alias minima dolores magni ut. Blanditiis in excepturi deserunt eos error consequatur modi esse est.
       Reiciendis et consequuntur voluptas eligendi quod accusantium assumenda sit repudiandae? Perspiciatis ipsa tempore commodi explicabo et cupiditate unde molestias repellendus, quam, provident nisi alias ipsam, sed nihil voluptatem earum nobis.
       Tenetur ex, earum quas similique exercitationem illo dolore asperiores. Facilis autem beatae, ut et fuga sequi quisquam officia minima tempora fugiat quos perspiciatis nam soluta voluptate maiores consequatur. Nulla, qui.
@@ -28,6 +28,7 @@
       Optio autem quod in fuga, sunt voluptatem. Tempora quas ad ullam corrupti, minus deleniti atque blanditiis adipisci aspernatur vel maxime ea quis libero. Labore similique expedita et illo, dolore illum?</p>
     </div>
     <div class="success-footer footer">Generated with 💚 by <a class="footer-link" target="_blank" href="https://github.com/kstawinski/readme-generator">README Generator</a></div>
+    <input type="hidden" id="input">
   </div>
 </template>
 
@@ -37,6 +38,21 @@ import SuccessIcon from '@/components/SuccessIcon.vue';
 export default {
   name: 'FormSuccess',
   components: { SuccessIcon },
+  methods: {
+    copyToClipboard() {
+      const content = document.querySelector('#content').innerHTML;
+      const input = document.querySelector('#input');
+      try {
+        input.setAttribute('type', 'text');
+        input.value = content;
+        input.select();
+        document.execCommand('copy');
+        input.setAttribute('type', 'hidden');
+      } catch (e) {
+        console.warn(e);
+      }
+    },
+  },
 };
 </script>
 
@@ -128,4 +144,5 @@ export default {
       margin-right: 3px;
     }
 }
+#input { opacity: 0; }
 </style>
