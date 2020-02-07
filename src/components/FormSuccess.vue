@@ -1,6 +1,9 @@
 <template>
   <div class="success">
-    <!-- <div @click="this.formActive = true">Powrót</div> -->
+    <!-- <div class="success-close">
+      <span class="far fa-times-circle" aria-label="Close modal"></span>
+    </div> -->
+
     <div class="success-container">
       <SuccessIcon color="#62b762" class="success-image" />
       <p class="success-title">We got it!</p>
@@ -24,7 +27,6 @@
       Dignissimos, dolorum veritatis cumque harum minima veniam quas corporis officiis vero corrupti nam quis pariatur voluptatem sapiente maiores debitis nesciunt inventore aspernatur! Quo cumque itaque culpa doloremque rerum nihil nobis.
       Optio autem quod in fuga, sunt voluptatem. Tempora quas ad ullam corrupti, minus deleniti atque blanditiis adipisci aspernatur vel maxime ea quis libero. Labore similique expedita et illo, dolore illum?</p>
     </div>
-
     <div class="success-footer footer">Generated with 💚 by <a class="footer-link" target="_blank" href="https://github.com/kstawinski/readme-generator">README Generator</a></div>
   </div>
 </template>
