@@ -15,6 +15,8 @@
       <div class="success-buttonsRow">
         <button class="button" @click="download()"><span class="button-icon fas fa-cloud-download-alt" aria-hidden="true"></span>Download</button>
         <button class="button button-secondary" @click="copyToClipboard()">I want to copy</button>
+        <span class="success-alert" v-if="showAlert == true">
+          Copied <span class="far fa-thumbs-up" aria-hidden></span></span>
       </div>
       <p class="success-code" id="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta rem dolorem numquam perspiciatis unde, doloribus quo omnis dignissimos aliquid culpa nobis qui fuga assumenda non voluptatibus quidem, iste quia! Accusantium.
       Quas deleniti nam dolorum doloribus, blanditiis reprehenderit ipsam modi mollitia officiis praesentium tempora, eum, ratione alias minima dolores magni ut. Blanditiis in excepturi deserunt eos error consequatur modi esse est.
@@ -39,6 +41,11 @@ import fileDownload from 'js-file-download';
 export default {
   name: 'FormSuccess',
   components: { SuccessIcon },
+  data() {
+    return {
+      showAlert: false,
+    };
+  },
   methods: {
     copyToClipboard() {
       const content = document.querySelector('#content').innerHTML;
@@ -49,6 +56,10 @@ export default {
         input.select();
         document.execCommand('copy');
         input.setAttribute('type', 'hidden');
+        this.showAlert = true;
+        setTimeout(() => {
+          this.showAlert = false;
+        }, 3500);
       } catch (e) {
         console.warn(e);
       }
@@ -107,6 +118,12 @@ export default {
     }
     &-buttonsRow {
       margin: 30px auto;
+    }
+    &-alert {
+      font-weight: 500;
+      color: #62b762;
+      text-transform: uppercase;
+      padding-left: 10px;
     }
 }
 .button {
