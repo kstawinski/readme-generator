@@ -13,7 +13,7 @@
     </div>
     <div class="success-container success-container_code">
       <div class="success-buttonsRow">
-        <button class="button"><span class="button-icon fas fa-cloud-download-alt" aria-hidden="true"></span>Download</button>
+        <button class="button" @click="download()"><span class="button-icon fas fa-cloud-download-alt" aria-hidden="true"></span>Download</button>
         <button class="button button-secondary" @click="copyToClipboard()">I want to copy</button>
       </div>
       <p class="success-code" id="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta rem dolorem numquam perspiciatis unde, doloribus quo omnis dignissimos aliquid culpa nobis qui fuga assumenda non voluptatibus quidem, iste quia! Accusantium.
@@ -34,6 +34,7 @@
 
 <script>
 import SuccessIcon from '@/components/SuccessIcon.vue';
+import fileDownload from 'js-file-download';
 
 export default {
   name: 'FormSuccess',
@@ -48,6 +49,15 @@ export default {
         input.select();
         document.execCommand('copy');
         input.setAttribute('type', 'hidden');
+      } catch (e) {
+        console.warn(e);
+      }
+    },
+    download() {
+      const content = document.querySelector('#content').innerHTML;
+      // console.log('pobieranie');
+      try {
+        fileDownload(content, 'README.md');
       } catch (e) {
         console.warn(e);
       }

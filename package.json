@@ -10,6 +10,7 @@
   "dependencies": {
     "babel-runtime": "^6.26.0",
     "core-js": "^3.4.4",
+    "js-file-download": "^0.4.9",
     "vue": "^2.6.10",
     "vue-body-class": "^3.0.2",
     "vue-markdown": "^2.2.4",
