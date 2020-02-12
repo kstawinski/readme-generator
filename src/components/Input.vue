@@ -1,7 +1,11 @@
 <template>
   <div class="input">
-    <label class="input-label" v-bind:for="name">{{ label }}</label>
-    <input class="input-field" v-bind:type="type" v-bind:name="name" v-bind:id="name">
+    <!-- <label class="input-label" v-bind:for="name">{{ label }}</label> -->
+    <input class="input-field"
+      v-bind:type="type"
+      v-bind:name="this.data[this.currentStep].inputName"
+      v-bind:id="this.data[this.currentStep].inputName"
+      v-bind:placeholder="this.data[this.currentStep].placeholder">
   </div>
 </template>
 
@@ -9,10 +13,12 @@
 export default {
   name: 'Input',
   props: {
-    label: String,
+    // label: String,
     name: String,
     type: String,
     placeholder: String,
+    currentStep: Number,
+    data: Array,
   },
 };
 </script>
@@ -30,6 +36,7 @@ export default {
     padding: 10px 5px;
     color: #2f2f2f;
     outline: 0;
+    text-align: center;
 
     &:focus {
       border-bottom-color: #27359c;
