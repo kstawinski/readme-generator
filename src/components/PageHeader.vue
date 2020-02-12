@@ -1,5 +1,5 @@
 <template>
-  <div class="hero">
+  <div class="hero" v-bind:style="{ backgroundColor: color }">
     <div class="container hero-wrapper">
       <div class="hero-content">
         <h1 class="hero-title">README Generator</h1>
@@ -23,13 +23,13 @@ export default {
   components: { Button },
   props: {
     title: String,
+    color: String,
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .hero {
-  background-color: #27359c;
   background-image: url('../assets/pattern.png');
 
   &-wrapper {

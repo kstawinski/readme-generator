@@ -4,6 +4,7 @@
       <span class="far fa-times-circle" aria-label="Close modal"></span>
     </div> -->
 
+    <button @click="backToForm()" class="success-back">Back to form</button>
     <div class="success-container">
       <SuccessIcon color="#62b762" class="success-image" />
       <p class="success-title">We got it!</p>
@@ -18,16 +19,20 @@
         <span class="success-alert" v-if="showAlert == true">
           Copied <span class="far fa-thumbs-up" aria-hidden></span></span>
       </div>
-      <p class="success-code" id="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta rem dolorem numquam perspiciatis unde, doloribus quo omnis dignissimos aliquid culpa nobis qui fuga assumenda non voluptatibus quidem, iste quia! Accusantium.
-      Quas deleniti nam dolorum doloribus, blanditiis reprehenderit ipsam modi mollitia officiis praesentium tempora, eum, ratione alias minima dolores magni ut. Blanditiis in excepturi deserunt eos error consequatur modi esse est.
-      Reiciendis et consequuntur voluptas eligendi quod accusantium assumenda sit repudiandae? Perspiciatis ipsa tempore commodi explicabo et cupiditate unde molestias repellendus, quam, provident nisi alias ipsam, sed nihil voluptatem earum nobis.
-      Tenetur ex, earum quas similique exercitationem illo dolore asperiores. Facilis autem beatae, ut et fuga sequi quisquam officia minima tempora fugiat quos perspiciatis nam soluta voluptate maiores consequatur. Nulla, qui.
-      Est perferendis debitis asperiores distinctio. Asperiores expedita distinctio libero soluta eos molestiae rerum blanditiis recusandae! Inventore placeat iste exercitationem, dolorum doloremque quaerat minima, quod voluptate quas accusantium pariatur possimus quibusdam?
-      Perferendis minima hic temporibus tempora corrupti nihil quasi necessitatibus totam voluptas doloremque dignissimos, iste fugiat magnam doloribus voluptatibus itaque dolorem rerum qui id architecto suscipit? Illum quas deleniti molestiae consequuntur?
-      Magni ratione unde suscipit id, nisi fuga quas dicta, eos et nihil perferendis reprehenderit quisquam! Nostrum fugit veniam facilis nisi deserunt nobis hic repudiandae quis neque molestias? Inventore, nulla veniam.
-      Iure reiciendis perferendis enim repudiandae porro culpa debitis ipsum, tempora quis ab cupiditate eaque explicabo minus ipsa aut rerum consectetur omnis at nobis molestias est reprehenderit nulla. Architecto, aut pariatur?
-      Dignissimos, dolorum veritatis cumque harum minima veniam quas corporis officiis vero corrupti nam quis pariatur voluptatem sapiente maiores debitis nesciunt inventore aspernatur! Quo cumque itaque culpa doloremque rerum nihil nobis.
-      Optio autem quod in fuga, sunt voluptatem. Tempora quas ad ullam corrupti, minus deleniti atque blanditiis adipisci aspernatur vel maxime ea quis libero. Labore similique expedita et illo, dolore illum?</p>
+      <GenerateContent
+        :markdown="false"
+        :title="title"
+        :description="description"
+        :repoURL="repoURL"
+        :demoURL="demoURL"
+        :imageURL="imageURL"
+        :features="features"
+        :technologies="technologies"
+        :runCommand="runCommand"
+        :buildCommand="buildCommand"
+        :license="license"
+        :authorInfo="authorInfo"
+      />
     </div>
     <div class="success-footer footer">Generated with 💚 by <a class="footer-link" target="_blank" href="https://github.com/kstawinski/readme-generator">README Generator</a></div>
     <input type="hidden" id="input">
@@ -36,11 +41,25 @@
 
 <script>
 import SuccessIcon from '@/components/SuccessIcon.vue';
+import GenerateContent from '@/components/GenerateContent.vue';
 import fileDownload from 'js-file-download';
 
 export default {
   name: 'FormSuccess',
-  components: { SuccessIcon },
+  components: { SuccessIcon, GenerateContent },
+  props: {
+    title: String,
+    description: String,
+    repoURL: String,
+    demoURL: String,
+    imageURL: String,
+    features: String,
+    technologies: String,
+    runCommand: String,
+    buildCommand: String,
+    license: String,
+    authorInfo: String,
+  },
   data() {
     return {
       showAlert: false,
@@ -103,19 +122,20 @@ export default {
       line-height: 1.5;
       color: #565656;
     }
-    &-code {
-      max-width: 600px;
-      margin: 0 auto 30px auto;
-      line-height: 1.65;
-      background: #f3f3f3;
-      padding: 30px;
-      border-radius: 3px;
-      box-sizing: border-box;
-      color: #4a4a4a;
-      font-family: monospace;
-      font-size: 14px;
-      text-align: left;
-    }
+    // &-code {
+    //   white-space: pre-wrap;
+    //   max-width: 600px;
+    //   margin: 0 auto 30px auto;
+    //   line-height: 1.65;
+    //   background: #f3f3f3;
+    //   padding: 30px;
+    //   border-radius: 3px;
+    //   box-sizing: border-box;
+    //   color: #4a4a4a;
+    //   font-family: monospace;
+    //   font-size: 14px;
+    //   text-align: left;
+    // }
     &-buttonsRow {
       margin: 30px auto;
     }

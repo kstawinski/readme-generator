@@ -1,230 +1,284 @@
 <template>
-  <div>
-    <PageHeader title="Create a file" />
-
-    <div v-if="formActive == false">
-      <FormSuccess />
-    </div>
-
-    <div class="page-wrapper">
-      <div v-if="formActive == true">
-        <ul class="steps">
+  <FormSuccess
+    v-if="formActive == false"
+    :title="steps[0].data"
+    :description="steps[1].data"
+    :repoURL="steps[2].data"
+    :demoURL="steps[3].data"
+    :imageURL="steps[4].data"
+    :features="steps[5].data"
+    :technologies="steps[6].data"
+    :runCommand="steps[7].data"
+    :buildCommand="steps[8].data"
+    :license="steps[9].data"
+    :authorInfo="authorInfo"
+  />
+  <div v-else>
+    <PageHeader title="Create a file" color="#27359c"/>
+    <Tips />
+    <div class="row">
+      <div class="row-column">
+        <ul>
           <li
             v-for="step in steps"
-            v-bind:key="step.id"
-            :class="[
-              { 'steps-item_active': currentStep == step.stepId },
-              'steps-item'
-            ]">{{ step.id }}
+            v-bind:key="step.id">
+              <label class="form-label" :for="step.inputName">{{ step.title }}</label>
+              <textarea class="form-input"
+                v-if="step.textarea"
+                :id="step.inputName"
+                :key="step.id"
+                v-model="step.data"
+                rows="6"></textarea>
+              <input class="form-input"
+                v-else
+                type="text"
+                :id="step.inputName"
+                :key="step.id"
+                v-model="step.data">
+              <small class="form-description">{{ step.description }}</small>
           </li>
+          <label><input type="checkbox" v-model="authorInfo">
+          Insert annotation about the author of the project</label>
         </ul>
-
-        <div class="form">
-          <div>
-            <div class="form-title">{{ steps[currentStep].title }}</div>
-            <p class="form-description">{{ steps[currentStep].description }}</p>
-            <Input :data="steps" v-bind:currentStep="currentStep" />
-
-            <button
-              class="navButton"
-              :class="[{ 'navButton-success': isLastStep() }, 'navButton']"
-              @click="nextStep()">
-                <div v-if="isLastStep()" class="navButton-flex">
-                  <!-- <SuccessIcon color="#fff" class="navButton-icon"/> -->
-                  <div>
-                    <span
-                      class="navButton-icon fas fa-cloud-download-alt"
-                      aria-hidden="true">
-                    </span>
-                    <span>Download file</span>
-                  </div>
-                </div>
-                <div v-else>Next step</div>
-            </button>
-            <button
-              v-if="currentStep !== 0"
-              class="navButton navButton-secondary"
-              @click="previousStep()">Previous step</button>
-            </div>
-        </div>
       </div>
-      <!-- <div v-else class="success">
-        <FormSuccess />
-      </div> -->
+      <div class="row-column row-column_code">
+        <GenerateContent
+          :markdown="true"
+          :title="steps[0].data"
+          :description="steps[1].data"
+          :repoURL="steps[2].data"
+          :demoURL="steps[3].data"
+          :imageURL="steps[4].data"
+          :features="steps[5].data"
+          :technologies="steps[6].data"
+          :runCommand="steps[7].data"
+          :buildCommand="steps[8].data"
+          :license="steps[9].data"
+          :authorInfo="authorInfo"
+        />
+      </div>
     </div>
 
+    <div v-if="formActive" class="button-row">
+      <button class="button" @click="disableForm">
+        <span class="button-icon fas fa-file-download" aria-hidden></span> Get my file</button>
+    </div>
   </div>
 </template>
 
 <script>
-import Input from '@/components/Input.vue';
+// import Input from '@/components/Input.vue';
 import PageHeader from '@/components/PageHeader.vue';
+import GenerateContent from '@/components/GenerateContent.vue';
 import FormSuccess from '@/components/FormSuccess.vue';
-// import VueMarkdown from 'vue-markdown';
+import Tips from '@/components/Tips.vue';
 
 export default {
   name: 'Create',
-  components: { PageHeader, Input, FormSuccess },
+  components: {
+    PageHeader,
+    GenerateContent,
+    FormSuccess,
+    Tips,
+  },
+  methods: {
+    disableForm() {
+      this.formActive = false;
+    },
+  },
   data() {
     return {
-      currentStep: 0,
       formActive: true,
+      authorInfo: true,
       steps: [
         {
           id: 1,
-          stepId: 0,
           title: 'Project name',
           description: 'Please enter name of your project. It will be your README file title.',
           inputName: 'prName',
-          placeholder: 'readme-generator',
+          data: 'readme-generator',
         }, {
           id: 2,
-          stepId: 1,
+          title: 'Description',
+          description: '',
+          inputName: 'prDescription',
+          data: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent fringilla vulputate tortor non sodales. Sed tristique congue massa, in laoreet ipsum scelerisque eget. Sed nisl mi, imperdiet vitae pellentesque et, porta non neque. Donec tincidunt arcu porta ornare faucibus.',
+          textarea: true,
+        }, {
+          id: 3,
           title: 'Repository link',
           description: 'Link to your project GitHub repository.',
           inputName: 'prRepo',
-          placeholder: 'https://github.com/kstawinski/readme-generator',
+          data: 'https://github.com/kstawinski/readme-generator',
+        }, {
+          id: 4,
+          title: 'Demo link',
+          description: 'Link to demonstration of your project. If you have not it, please write nothing here.',
+          inputName: 'prDemo',
+          data: 'https://demo.com',
+        }, {
+          id: 5,
+          title: 'Image URL',
+          description: 'URL of image that present your project.',
+          inputName: 'prImage',
+          data: 'https://i.imgur.com/01OKzWO.png',
+        }, {
+          id: 6,
+          title: 'Features',
+          description: 'List of features that your project supports.',
+          inputName: 'prFeatures',
+          data: `- Customizable form
+- Download as file
+- Copy generated file
+- (**WIP**) Download from terminal`,
+          textarea: true,
+        }, {
+          id: 7,
+          title: 'Technologies',
+          description: 'List of technologies used in project.',
+          inputName: 'prTechnologies',
+          data: `- vue (2.6.10)
+- vue-body-class (^3.0.2)
+- vue-markdown (^2.2.4)
+- vue-router (^3.1.3)`,
+          textarea: true,
+        }, {
+          id: 8,
+          title: 'Run section',
+          description: 'Write something about running your projects. If this is neccessary, write about software requirements.',
+          inputName: 'prRun',
+          data: `If you want to run project, just clone this repository and run *serve* command.
+[code]
+git clone [link].git
+cd readme-generator
+npm install
+npm run serve
+[/code]`,
+          textarea: true,
+        }, {
+          id: 9,
+          title: 'Build section',
+          description: 'Write something about building your projects. If this is neccessary, write about software requirements.',
+          inputName: 'prBuild',
+          data: `[code]
+npm run build
+[/code]`,
+          textarea: true,
+        }, {
+          id: 10,
+          title: 'License info',
+          description: 'License used in your project.',
+          inputName: 'prLicense',
+          data: '',
+          textarea: true,
         },
       ],
     };
-  },
-  methods: {
-    nextStep() {
-      // If form is actually active
-      if (this.formActive) {
-        if (this.isCompleted() === false) {
-          // Go to the next step
-          this.currentStep += 1;
-        }
-      }
-    },
-    previousStep() {
-      // Go to the previous step
-      this.currentStep -= 1;
-
-      // Check: is form completed
-      this.isCompleted();
-    },
-    isCompleted() {
-      // If form was completed
-      if ((this.currentStep + 1) !== this.steps.length) return false;
-
-      // If not, set form activity to false and return true (form completed)
-      this.formActive = false;
-      return true;
-    },
-    isLastStep() {
-      if ((this.currentStep + 1) === this.steps.length) return true;
-      return false;
-    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-strong { font-weight: bold; }
-.page {
-  &-wrapper {
-    // display: flex;
-  }
-}
-.steps {
+@import url('../assets/github-markdown.css');
+.row {
   display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  margin: 40px 0;
+  justify-content: space-between;
 
-  &-item {
-    width: 50px;
-    text-align: center;
-    height: 50px;
-    line-height: 50px;
-    border-radius: 50%;
-    background: #eaeaea;
-    margin: 0 20px;
-    font-weight: 600;
-    color: #7b7b7b;
-    position: relative;
+  &-column {
+    padding: 40px;
+    width: 50%;
 
-    &:not(:last-child):after {
-      height: 2px;
-      width: 24px;
-      content: '';
-      position: absolute;
-      background: #f5f5f5;
-      z-index: -1;
-      top: 50%;
-      right: -32px;
-    }
-
-    &_active {
-      background: #26359c;
-      color: #fff;
+    &_code {
+      background: #f3f3f3;
     }
   }
 }
 .form {
-  text-align: center;
-  width: 40%;
-  margin: 0 auto;
-
-  &-title {
-    margin: 20px 0 10px 0;
-    font-size: 26px;
-    font-weight: 300;
-  }
-
-  &-description {
-    margin-bottom: 40px;
-  }
-}
-.navButton {
-  font-family: 'Roboto';
-  font-size: 16px;
-  margin: 20px auto 0 auto;
-  background: #26359c;
-  border: 0;
-  border-radius: 3px;
-  padding: 15px 35px;
-  color: #fff;
-  font-weight: 600;
-  cursor: pointer;
-  outline: 0;
-  display: block;
-
-  &-secondary {
-    background: #eaeaea;
-    color: #737373;
+  &-label {
     font-weight: 500;
-    font-size: 14px;
-    padding: 10px 20px;
-    margin: 10px auto;
-    opacity: .7;
-    transition: opacity .15s;
-    transition-timing-function: linear;
+  }
+  &-input {
+    display: block;
+    width: -webkit-fill-available;
+    border: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    padding: 10px 0;
+    margin: 6px 0;
+    border-bottom: 1px solid lightgray;
+    color: #27359c;
+    outline: 0;
+    resize: vertical;
 
-      &:hover {
-        opacity: 1;
+      &:focus {
+        border-color: #27359c;
       }
   }
-
-  &-success {
-    background: #62b762;
-    display: flex;
-    padding: 15px 25px;
+  &-description {
+    display: block;
+    font-size: small;
+    color: gray;
+    margin-bottom: 35px;
   }
-  &-flex {
-    display: flex;
-  }
-  &-icon {
-    width: 20px;
-    margin-right: 10px;
-    // opacity: .5;
-  }
+}
+.button {
+  cursor: pointer;
+  background: #36d28b;
+  position: fixed;
+  bottom: 30px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  color: #fff;
+  padding: 10px;
+  width: 30%;
+  min-width: 200px;
+  font-size: 16px;
+  border: 0;
+  border-radius: 3px;
+  border: 2px solid #36d28b;
+    &-row {
+      display: flex;
+      justify-content: center;
+    }
+    &-icon {
+      margin-right: 5px;
+    }
+}
+.button {
+  box-shadow: 0 0 0 #36d28b;
+  animation: pulse 1s infinite;
+  text-shadow: 0 1px 2px #0000003b;
 
   &:hover {
-    box-shadow: 0 3px 1px #0000000a;
+    animation: none;
+    color: #36d28b;
+    text-shadow: none;
+    background: #fff;
+  }
+}
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(54, 210, 139, 0.4);
+  }
+  70% {
+    -webkit-box-shadow: 0 0 0 10px rgba(54, 210, 139, 0);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 0 0 rgba(54, 210, 139, 0);
+  }
+}
+@keyframes pulse {
+  0% {
+    -moz-box-shadow: 0 0 0 0 rgba(54, 210, 139, 0.4);
+    box-shadow: 0 0 0 0 rgba(54, 210, 139, 0.4);
+  }
+  70% {
+    -moz-box-shadow: 0 0 0 10px rgba(54, 210, 139, 0);
+    box-shadow: 0 0 0 10px rgba(54, 210, 139, 0.0);
+  }
+  100% {
+    -moz-box-shadow: 0 0 0 0  rgba(54, 210, 139, 0);
+    box-shadow: 0 0 0 0  rgba(54, 210, 139, 0);
   }
 }
 </style>
