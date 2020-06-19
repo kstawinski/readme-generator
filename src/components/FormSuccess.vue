@@ -68,6 +68,13 @@ export default {
         input.select();
         document.execCommand('copy');
         input.setAttribute('type', 'hidden');
+
+        // If copied, show snackbar
+        this.$buefy.snackbar.open({
+          message: 'File content copied to your clipboard.',
+          position: 'is-bottom-left',
+          duration: 2000,
+        });
       } catch (e) {
         console.warn(e);
       }
