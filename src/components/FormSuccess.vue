@@ -71,6 +71,7 @@ export default {
   },
   methods: {
     copyToClipboard() {
+      this.terminalActive = false;
       const content = document.querySelector('#content').innerHTML;
       const input = document.querySelector('#input');
       try {
