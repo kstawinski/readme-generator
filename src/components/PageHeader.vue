@@ -1,15 +1,15 @@
 <template>
-  <div class="hero" v-bind:style="{ backgroundColor: color }">
-    <div class="container hero-wrapper">
-      <div class="hero-content">
-        <h1 class="hero-title">README Generator</h1>
-        <h2 class="hero-subtitle">{{ title }}</h2>
+  <div class="header" v-bind:style="{ backgroundColor: color }">
+    <div class="container header-wrapper">
+      <div class="header-content">
+        <h1 class="header-title">README Generator</h1>
+        <h2 class="header-subtitle">{{ title }}</h2>
       </div>
 
       <Button
         text="Back to homepage"
         link="/"
-        class="hero-button"
+        class="header-button"
       />
     </div>
   </div>
@@ -29,8 +29,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.hero {
+.header {
   background-image: url('../assets/pattern.png');
+  padding: 0 40px;
 
   &-wrapper {
     display: flex;
