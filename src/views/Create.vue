@@ -15,7 +15,7 @@
   />
   <div v-else>
     <PageHeader title="Create a file" color="#27359c"/>
-    <Tips />
+
     <div class="row">
       <div class="row-column">
         <ul>
@@ -70,7 +70,6 @@
 import PageHeader from '@/components/PageHeader.vue';
 import GenerateContent from '@/components/GenerateContent.vue';
 import FormSuccess from '@/components/FormSuccess.vue';
-import Tips from '@/components/Tips.vue';
 
 export default {
   name: 'Create',
@@ -78,7 +77,6 @@ export default {
     PageHeader,
     GenerateContent,
     FormSuccess,
-    Tips,
   },
   methods: {
     disableForm() {
