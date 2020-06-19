@@ -61,7 +61,16 @@
     </div>
 
     <div v-if="formActive" class="button-row">
-      <button class="button" @click="toggleForm()">Get my file</button>
+      <b-button
+        size="is-medium"
+        type="is-primary"
+        expanded
+        @click="toggleForm()">Generate file →</b-button>
+      <!-- <small>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+        Soluta natus ab corporis esse cupiditate dolores, enim
+        suscipit deleniti iusto sed? Unde quibusdam ratione laborum
+        porro fugit laudantium, omnis facilis nostrum!</small> -->
     </div>
   </div>
 </template>
@@ -220,60 +229,25 @@ npm run build
   }
 }
 .button {
-  cursor: pointer;
-  background: #36d28b;
-  position: fixed;
-  bottom: 30px;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
-  color: #fff;
-  padding: 10px;
-  width: 30%;
-  min-width: 200px;
-  font-size: 16px;
-  border: 0;
-  border-radius: 3px;
-  border: 2px solid #36d28b;
-    &-row {
-      display: flex;
-      justify-content: center;
-    }
-}
-.button {
-  box-shadow: 0 0 0 #36d28b;
+  box-shadow: 0 0 0 #27359c;
   animation: pulse 1s infinite;
-  text-shadow: 0 1px 2px #0000003b;
 
   &:hover {
     animation: none;
-    color: #36d28b;
-    text-shadow: none;
-    background: #fff;
   }
-}
-@-webkit-keyframes pulse {
-  0% {
-    -webkit-box-shadow: 0 0 0 0 rgba(54, 210, 139, 0.4);
-  }
-  70% {
-    -webkit-box-shadow: 0 0 0 10px rgba(54, 210, 139, 0);
-  }
-  100% {
-    -webkit-box-shadow: 0 0 0 0 rgba(54, 210, 139, 0);
+  &-row {
+    padding: 30px;
   }
 }
 @keyframes pulse {
   0% {
-    -moz-box-shadow: 0 0 0 0 rgba(54, 210, 139, 0.4);
-    box-shadow: 0 0 0 0 rgba(54, 210, 139, 0.4);
+    -webkit-box-shadow: 0 0 0 0 rgba(#27359c, 0.4);
   }
   70% {
-    -moz-box-shadow: 0 0 0 10px rgba(54, 210, 139, 0);
-    box-shadow: 0 0 0 10px rgba(54, 210, 139, 0.0);
+    -webkit-box-shadow: 0 0 0 10px rgba(#27359c, 0);
   }
   100% {
-    -moz-box-shadow: 0 0 0 0  rgba(54, 210, 139, 0);
-    box-shadow: 0 0 0 0  rgba(54, 210, 139, 0);
+    -webkit-box-shadow: 0 0 0 0 rgba(#27359c, 0);
   }
 }
 </style>
