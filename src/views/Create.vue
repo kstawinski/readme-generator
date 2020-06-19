@@ -60,8 +60,7 @@
     </div>
 
     <div v-if="formActive" class="button-row">
-      <button class="button" @click="disableForm">
-        <span class="button-icon fas fa-file-download" aria-hidden></span> Get my file</button>
+      <button class="button" @click="disableForm">Get my file</button>
     </div>
   </div>
 </template>
@@ -239,9 +238,6 @@ npm run build
     &-row {
       display: flex;
       justify-content: center;
-    }
-    &-icon {
-      margin-right: 5px;
     }
 }
 .button {

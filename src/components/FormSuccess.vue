@@ -14,7 +14,7 @@
     </div>
     <div class="success-container success-container_code">
       <div class="success-buttonsRow">
-        <button class="button" @click="download()"><span class="button-icon fas fa-cloud-download-alt" aria-hidden="true"></span>Download</button>
+        <button class="button" @click="download()">Download</button>
         <button class="button button-secondary" @click="copyToClipboard()">I want to copy</button>
       </div>
       <GenerateContent

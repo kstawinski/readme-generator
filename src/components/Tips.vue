@@ -2,7 +2,6 @@
   <div class="warning">
     <!-- eslint-disable max-len -->
       <p class="warning-text">
-        <span class="warning-icon fas fa-info-circle" aria-label="Info icon"></span>
         <span class="warning-text_bold">Project is in beta version. </span>
         <span>If you see any bugs, please report it by using <a class="warning-link" href="https://github.com/kstawinski/readme-generator/issues" target="_blank">GitHub issues</a>.</span>
       </p>
@@ -20,9 +19,6 @@
     &_bold {
       font-weight: 600;
     }
-  }
-  &-icon {
-    margin-right: 10px;
   }
   &-link {
     color: #26449c;
