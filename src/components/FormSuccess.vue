@@ -16,8 +16,6 @@
       <div class="success-buttonsRow">
         <button class="button" @click="download()"><span class="button-icon fas fa-cloud-download-alt" aria-hidden="true"></span>Download</button>
         <button class="button button-secondary" @click="copyToClipboard()">I want to copy</button>
-        <span class="success-alert" v-if="showAlert == true">
-          Copied <span class="far fa-thumbs-up" aria-hidden></span></span>
       </div>
       <GenerateContent
         :markdown="false"
@@ -60,11 +58,6 @@ export default {
     license: String,
     authorInfo: String,
   },
-  data() {
-    return {
-      showAlert: false,
-    };
-  },
   methods: {
     copyToClipboard() {
       const content = document.querySelector('#content').innerHTML;
@@ -75,10 +68,6 @@ export default {
         input.select();
         document.execCommand('copy');
         input.setAttribute('type', 'hidden');
-        this.showAlert = true;
-        setTimeout(() => {
-          this.showAlert = false;
-        }, 3500);
       } catch (e) {
         console.warn(e);
       }
