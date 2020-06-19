@@ -91,6 +91,9 @@ export default {
         console.warn(e);
       }
     },
+    backToForm() {
+      this.$emit('back');
+    },
   },
 };
 </script>

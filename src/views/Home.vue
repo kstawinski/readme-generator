@@ -12,6 +12,7 @@
     :buildCommand="steps[8].data"
     :license="steps[9].data"
     :authorInfo="authorInfo"
+    @back="toggleForm()"
   />
   <div v-else>
     <PageHeader title="Create a file" color="#27359c"/>
@@ -60,7 +61,7 @@
     </div>
 
     <div v-if="formActive" class="button-row">
-      <button class="button" @click="disableForm">Get my file</button>
+      <button class="button" @click="toggleForm()">Get my file</button>
     </div>
   </div>
 </template>
@@ -79,8 +80,8 @@ export default {
     FormSuccess,
   },
   methods: {
-    disableForm() {
-      this.formActive = false;
+    toggleForm() {
+      this.formActive = !this.formActive;
     },
   },
   data() {
