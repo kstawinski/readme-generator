@@ -4,7 +4,7 @@
       <span class="far fa-times-circle" aria-label="Close modal"></span>
     </div> -->
 
-    <button @click="backToForm()" class="success-back">Back to form</button>
+    <button @click="backToForm()" class="success-back"></button>
     <div class="success-container">
       <SuccessIcon color="#62b762" class="success-image" />
       <p class="success-title">We got it!</p>
@@ -17,7 +17,7 @@
         <b-button type="is-primary" size="is-medium" @click="download()">Download</b-button>
         <b-button type="is-primary" size="is-medium" @click="copyToClipboard()">Copy to clipboard</b-button>
         <b-tooltip label="Work in progress" type="is-dark" animated>
-          <b-button type="is-primary" size="is-medium" inverted disabled>Download using terminal</b-button>
+          <b-button type="is-primary" size="is-medium" inverted @click="terminalActive = true">Download using terminal</b-button>
         </b-tooltip>
       </div>
       <GenerateContent
@@ -33,21 +33,24 @@
         :buildCommand="buildCommand"
         :license="license"
         :authorInfo="authorInfo"
+        v-if="!terminalActive"
       />
     </div>
-    <div class="success-footer footer">Generated with 💚 by <a class="footer-link" target="_blank" href="https://github.com/kstawinski/readme-generator">README Generator</a></div>
+    <!-- <div class="success-footer footer">Generated with 💚 by <a class="footer-link" target="_blank" href="https://github.com/kstawinski/readme-generator">README Generator</a></div> -->
     <input type="hidden" id="input">
+    <DownloadTerminal v-if="terminalActive" />
   </div>
 </template>
 
 <script>
 import SuccessIcon from '@/components/SuccessIcon.vue';
 import GenerateContent from '@/components/GenerateContent.vue';
+import DownloadTerminal from '@/components/DownloadTerminal.vue';
 import fileDownload from 'js-file-download';
 
 export default {
   name: 'FormSuccess',
-  components: { SuccessIcon, GenerateContent },
+  components: { SuccessIcon, GenerateContent, DownloadTerminal },
   props: {
     title: String,
     description: String,
@@ -60,6 +63,11 @@ export default {
     buildCommand: String,
     license: String,
     authorInfo: String,
+  },
+  data() {
+    return {
+      terminalActive: false,
+    };
   },
   methods: {
     copyToClipboard() {
