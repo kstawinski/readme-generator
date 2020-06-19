@@ -16,6 +16,9 @@
       <div class="success-buttonsRow">
         <b-button type="is-primary" size="is-medium" @click="download()">Download</b-button>
         <b-button type="is-primary" size="is-medium" @click="copyToClipboard()">Copy to clipboard</b-button>
+        <b-tooltip label="Work in progress" type="is-dark" animated>
+          <b-button type="is-primary" size="is-medium" inverted disabled>Download using terminal</b-button>
+        </b-tooltip>
       </div>
       <GenerateContent
         :markdown="false"
