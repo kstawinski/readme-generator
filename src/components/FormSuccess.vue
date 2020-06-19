@@ -14,8 +14,8 @@
     </div>
     <div class="success-container success-container_code">
       <div class="success-buttonsRow">
-        <button class="button" @click="download()">Download</button>
-        <button class="button button-secondary" @click="copyToClipboard()">I want to copy</button>
+        <b-button type="is-primary" size="is-medium" @click="download()">Download</b-button>
+        <b-button type="is-primary" size="is-medium" @click="copyToClipboard()">Copy to clipboard</b-button>
       </div>
       <GenerateContent
         :markdown="false"
@@ -133,45 +133,17 @@ export default {
     //   text-align: left;
     // }
     &-buttonsRow {
-      margin: 30px auto;
+      margin: 30px 0;
+
+      button:not(:last-child) {
+        margin-right: 8px;
+      }
     }
     &-alert {
       font-weight: 500;
       color: #62b762;
       text-transform: uppercase;
       padding-left: 10px;
-    }
-}
-.button {
-  background: #62b762;
-  border: 1px solid #62b762;
-  color: #fff;
-  font-weight: 500;
-  font-family: 'Roboto', sans-serif;
-  font-size: 16px;
-  padding: 10px 18px;
-  border-radius: 3px;
-  transition: .3s all;
-  cursor: pointer;
-
-    &:not(:last-child) {
-      margin-right: 10px;
-    }
-    &:hover {
-      background: #fff;
-      color: #62b762;
-    }
-    &-secondary {
-      background: #fff;
-      color: #62b762;
-
-        &:hover {
-          background: #62b762;
-          color: #fff;
-        }
-    }
-    &-icon {
-      margin-right: 8px;
     }
 }
 .footer {
