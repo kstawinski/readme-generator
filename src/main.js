@@ -1,10 +1,6 @@
 import Vue from 'vue';
-import { SnackbarProgrammatic as Snackbar } from 'buefy';
-import 'buefy/dist/buefy.css';
 import App from './App.vue';
 import router from './router';
-
-Vue.use(Snackbar);
 
 Vue.config.productionTip = false;
 

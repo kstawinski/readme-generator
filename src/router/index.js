@@ -1,9 +1,12 @@
 import Vue from 'vue';
+import Buefy from 'buefy';
+import 'buefy/dist/buefy.css';
 import VueRouter from 'vue-router';
 import Home from '@/views/Home.vue';
 import Create from '@/views/Create.vue';
 import VueBodyClass from 'vue-body-class';
 
+Vue.use(Buefy);
 Vue.use(VueRouter);
 
 const routes = [
