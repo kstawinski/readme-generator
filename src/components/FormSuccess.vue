@@ -88,7 +88,7 @@ export default {
           duration: 2000,
         });
       } catch (e) {
-        console.warn(e);
+        // console.warn(e);
       }
     },
     download() {
@@ -97,7 +97,7 @@ export default {
       try {
         fileDownload(content, 'README.md');
       } catch (e) {
-        console.warn(e);
+        // console.warn(e);
       }
     },
     backToForm() {
