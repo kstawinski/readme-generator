@@ -12,9 +12,6 @@
       <div class="success-buttonsRow">
         <b-button type="is-primary" size="is-medium" inverted @click="download()">Download</b-button>
         <b-button type="is-primary" size="is-medium" @click="copyToClipboard()">Copy to clipboard</b-button>
-        <b-tooltip label="Work in progress" type="is-dark" animated>
-          <b-button type="is-primary" size="is-medium" inverted @click="terminalActive = true">Download using terminal</b-button>
-        </b-tooltip>
       </div>
       <GenerateContent
         :markdown="false"
@@ -29,19 +26,16 @@
         :buildCommand="buildCommand"
         :license="license"
         :authorInfo="authorInfo"
-        v-if="!terminalActive"
       />
     </div>
     <!-- <div class="success-footer footer">Generated with 💚 by <a class="footer-link" target="_blank" href="https://github.com/kstawinski/readme-generator">README Generator</a></div> -->
     <input type="hidden" id="input">
-    <DownloadTerminal v-if="terminalActive" />
   </div>
 </template>
 
 <script>
 import SuccessIcon from '@/components/SuccessIcon.vue';
 import GenerateContent from '@/components/GenerateContent.vue';
-import DownloadTerminal from '@/components/DownloadTerminal.vue';
 import fileDownload from 'js-file-download';
 
 export default {
@@ -50,7 +44,6 @@ export default {
   components: {
     SuccessIcon,
     GenerateContent,
-    DownloadTerminal,
   },
 
   props: {
@@ -66,10 +59,6 @@ export default {
     license: String,
     authorInfo: String,
   },
-
-  data: () => ({
-    terminalActive: false,
-  }),
 
   methods: {
     copyToClipboard() {
