@@ -2,8 +2,7 @@
   <div class="success">
     <button @click="backToForm()" class="success-back"></button>
     <div class="success-container">
-      <SuccessIcon color="#62b762" class="success-image" />
-      <p class="success-title">We got it!</p>
+      <SuccessIcon color="#27359c" class="success-image" />
       <!-- eslint-disable max-len -->
       <p class="success-text">Your README.md file was generated successfully.</p>
       <p class="success-text">Click the button below and download your file.</p>
@@ -113,12 +112,7 @@ export default {
     }
     &-image {
       max-width: 70px;
-    }
-    &-title {
       margin: 20px 0;
-      color: #62b762;
-      font-size: 35px;
-      font-weight: 300;
     }
     &-text {
       line-height: 1.5;
