@@ -4,10 +4,12 @@
 
     <div class="success-container">
       <SuccessIcon color="#27359c" class="success-image" />
-      <!-- eslint-disable max-len -->
-      <p class="success-text">Your README.md file was generated successfully.</p>
-      <p class="success-text">Click the button below and download your file.</p>
 
+      <p class="success-text has-text-grey column is-6 is-offset-3">
+        Your README file has been successfully generated 🚀<br />
+        Now you can download it as an <code class="has-text-primary">.md</code>
+        file or copy it to your clipboard.
+      </p>
     </div>
 
     <div class="success-container success-container_code">
