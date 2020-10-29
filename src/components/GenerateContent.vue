@@ -27,8 +27,7 @@ export default {
   },
   methods: {
     generateMarkdown() {
-      return `
-# ${this.title}
+      return `# ${this.title}
 > ${this.description}
 
 [🚀 **Demo link**](${this.demoURL})
@@ -49,8 +48,7 @@ ${this.parse(this.buildCommand)}
 
 ## License
 ${this.license}
-${this.authorText(this.authorInfo)}
-      `;
+${this.authorText(this.authorInfo)}`;
     },
     parse(value) {
       return value
