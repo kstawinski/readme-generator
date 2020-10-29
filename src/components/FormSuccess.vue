@@ -33,7 +33,6 @@
         :authorInfo="authorInfo"
       />
     </div>
-    <!-- <div class="success-footer footer">Generated with 💚 by <a class="footer-link" target="_blank" href="https://github.com/kstawinski/readme-generator">README Generator</a></div> -->
     <input type="hidden" id="input">
   </div>
 </template>
@@ -132,19 +131,6 @@ export default {
       color: #62b762;
       text-transform: uppercase;
       padding-left: 10px;
-    }
-}
-.footer {
-  text-align: center;
-  font-size: small;
-  color: gray;
-  margin: 50px 0;
-
-    &-link {
-      color: #62b762;
-    }
-    &-icon {
-      margin-right: 3px;
     }
 }
 #input { opacity: 0; }
