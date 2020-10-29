@@ -19,7 +19,7 @@
 import Button from '@/components/Button.vue';
 
 export default {
-  name: 'PageHeader',
+  name: 'Header',
   components: { Button },
   props: {
     title: String,

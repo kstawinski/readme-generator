@@ -9,7 +9,7 @@
 import VueMarkdown from 'vue-markdown';
 
 export default {
-  name: 'GenerateContent',
+  name: 'Preview',
   components: { VueMarkdown },
   props: {
     markdown: Boolean,

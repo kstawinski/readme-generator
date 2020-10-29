@@ -3,7 +3,7 @@
     <button @click="backToForm()" class="success-back"></button>
 
     <div class="success-container">
-      <SuccessIcon color="#27359c" class="success-image" />
+      <Icon color="#27359c" class="success-image" />
 
       <p class="success-text has-text-grey column is-6 is-offset-3">
         Your README file has been successfully generated 🚀<br />
@@ -32,7 +32,7 @@
         </b-button>
       </div>
 
-      <GenerateContent
+      <Preview
         :markdown="false"
         :title="title"
         :description="description"
@@ -52,16 +52,16 @@
 </template>
 
 <script>
-import SuccessIcon from '@/components/SuccessIcon.vue';
-import GenerateContent from '@/components/GenerateContent.vue';
+import Icon from '@/components/Icon.vue';
+import Preview from '@/components/Preview.vue';
 import fileDownload from 'js-file-download';
 
 export default {
-  name: 'FormSuccess',
+  name: 'Summary',
 
   components: {
-    SuccessIcon,
-    GenerateContent,
+    Icon,
+    Preview,
   },
 
   props: {

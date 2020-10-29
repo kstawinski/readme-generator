@@ -1,5 +1,5 @@
 <template>
-  <FormSuccess
+  <Summary
     v-if="formActive == false"
     :title="steps[0].data"
     :description="steps[1].data"
@@ -15,7 +15,7 @@
     @back="toggleForm()"
   />
   <div v-else>
-    <PageHeader title="Create a file" color="#27359c"/>
+    <Header title="Create a file" color="#27359c"/>
 
     <div class="row">
       <div class="row-column">
@@ -43,7 +43,7 @@
         </ul>
       </div>
       <div class="row-column row-column_code">
-        <GenerateContent
+        <Preview
           :markdown="true"
           :title="steps[0].data"
           :description="steps[1].data"
@@ -77,16 +77,16 @@
 
 <script>
 // import Input from '@/components/Input.vue';
-import PageHeader from '@/components/PageHeader.vue';
-import GenerateContent from '@/components/GenerateContent.vue';
-import FormSuccess from '@/components/FormSuccess.vue';
+import Header from '@/components/Header.vue';
+import Preview from '@/components/Preview.vue';
+import Summary from '@/components/Summary.vue';
 
 export default {
   name: 'Create',
   components: {
-    PageHeader,
-    GenerateContent,
-    FormSuccess,
+    Header,
+    Preview,
+    Summary,
   },
   methods: {
     toggleForm() {
