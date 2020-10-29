@@ -27,11 +27,11 @@ export default {
   },
   methods: {
     generateMarkdown() {
-      return `# ${this.title}
+      return `
+# ${this.title}
 > ${this.description}
 
 [🚀 **Demo link**](${this.demoURL})
-
 <img src="${this.imageURL}" alt="" width="100%"/>
 
 ## Features
@@ -49,7 +49,8 @@ ${this.parse(this.buildCommand)}
 
 ## License
 ${this.license}
-${this.authorText(this.authorInfo)}`;
+${this.authorText(this.authorInfo)}
+      `;
     },
     parse(value) {
       return value
@@ -58,10 +59,10 @@ ${this.authorText(this.authorInfo)}`;
         .replace('[link]', this.repoURL);
     },
     authorText(boolean) {
-      if (boolean === true) {
-        return `
-***
-Generated with 💙 by [README Generator](https://github.com/kstawinski/readme-generator)`;
+      const text = 'Generated with 💙 by [README Generator](https://github.com/kstawinski/readme-generator)';
+
+      if (boolean) {
+        return text;
       }
       return '';
     },

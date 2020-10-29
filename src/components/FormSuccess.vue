@@ -1,9 +1,5 @@
 <template>
   <div class="success">
-    <!-- <div class="success-close">
-      <span class="far fa-times-circle" aria-label="Close modal"></span>
-    </div> -->
-
     <button @click="backToForm()" class="success-back"></button>
     <div class="success-container">
       <SuccessIcon color="#62b762" class="success-image" />
@@ -50,7 +46,13 @@ import fileDownload from 'js-file-download';
 
 export default {
   name: 'FormSuccess',
-  components: { SuccessIcon, GenerateContent, DownloadTerminal },
+
+  components: {
+    SuccessIcon,
+    GenerateContent,
+    DownloadTerminal,
+  },
+
   props: {
     title: String,
     description: String,
@@ -64,11 +66,11 @@ export default {
     license: String,
     authorInfo: String,
   },
-  data() {
-    return {
-      terminalActive: false,
-    };
-  },
+
+  data: () => ({
+    terminalActive: false,
+  }),
+
   methods: {
     copyToClipboard() {
       this.terminalActive = false;
