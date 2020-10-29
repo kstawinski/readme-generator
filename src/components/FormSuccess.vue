@@ -1,17 +1,21 @@
 <template>
   <div class="success">
     <button @click="backToForm()" class="success-back"></button>
+
     <div class="success-container">
       <SuccessIcon color="#27359c" class="success-image" />
       <!-- eslint-disable max-len -->
       <p class="success-text">Your README.md file was generated successfully.</p>
       <p class="success-text">Click the button below and download your file.</p>
+
     </div>
+
     <div class="success-container success-container_code">
       <div class="success-buttonsRow">
         <b-button type="is-primary" size="is-medium" inverted @click="download()">Download</b-button>
         <b-button type="is-primary" size="is-medium" @click="copyToClipboard()">Copy to clipboard</b-button>
       </div>
+
       <GenerateContent
         :markdown="false"
         :title="title"
