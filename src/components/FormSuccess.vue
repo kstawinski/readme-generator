@@ -85,9 +85,9 @@ export default {
 
         // If copied, show snackbar
         this.$buefy.snackbar.open({
-          message: 'File content copied to your clipboard.',
+          message: 'Content successfully copied to clipboard.',
           position: 'is-bottom-left',
-          duration: 2000,
+          duration: 2500,
         });
       } catch (e) {
         // console.warn(e);
