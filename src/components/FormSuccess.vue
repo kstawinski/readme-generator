@@ -120,24 +120,6 @@ export default {
       max-width: 70px;
       margin: 20px 0;
     }
-    &-text {
-      line-height: 1.5;
-      color: #565656;
-    }
-    // &-code {
-    //   white-space: pre-wrap;
-    //   max-width: 600px;
-    //   margin: 0 auto 30px auto;
-    //   line-height: 1.65;
-    //   background: #f3f3f3;
-    //   padding: 30px;
-    //   border-radius: 3px;
-    //   box-sizing: border-box;
-    //   color: #4a4a4a;
-    //   font-family: monospace;
-    //   font-size: 14px;
-    //   text-align: left;
-    // }
     &-buttonsRow {
       margin: 30px 0;
 
