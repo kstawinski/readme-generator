@@ -1,7 +1,17 @@
 <template>
   <div>
-    <vue-markdown v-if="markdown" class="markdown-body" :source="generateMarkdown()"></vue-markdown>
-    <pre v-else class="code" id="content">{{ generateMarkdown() }}</pre>
+    <vue-markdown
+      v-if="markdown"
+      class="markdown-body"
+      :source="generateMarkdown()"
+    ></vue-markdown>
+
+    <pre
+      v-else
+      class="code"
+      id="content"
+    >{{ generateMarkdown() }}
+    </pre>
   </div>
 </template>
 
