@@ -106,6 +106,17 @@ export default {
       // console.log('pobieranie');
       try {
         fileDownload(content, 'README.md');
+
+        // Wait 0.5 s
+        setTimeout(() => {
+          // If file was downloaded, show snackabr
+          this.$buefy.snackbar.open({
+            message: 'File was successfully downloaded.',
+            position: 'is-bottom',
+            actionText: null,
+            duration: 2500,
+          });
+        }, 500);
       } catch (e) {
         // console.warn(e);
       }
