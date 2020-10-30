@@ -91,12 +91,7 @@ export default {
         input.setAttribute('type', 'hidden');
 
         // If copied, show snackbar
-        this.$buefy.snackbar.open({
-          message: 'Content was successfully copied to clipboard.',
-          position: 'is-bottom',
-          actionText: null,
-          duration: 2500,
-        });
+        this.showSnackbar('Content was successfully copied to clipboard.');
       } catch (e) {
         // console.warn(e);
       }
@@ -110,12 +105,7 @@ export default {
         // Wait 0.5 s
         setTimeout(() => {
           // If file was downloaded, show snackabr
-          this.$buefy.snackbar.open({
-            message: 'File was successfully downloaded.',
-            position: 'is-bottom',
-            actionText: null,
-            duration: 2500,
-          });
+          this.showSnackbar('File was successfully downloaded.');
         }, 500);
       } catch (e) {
         // console.warn(e);
@@ -123,6 +113,14 @@ export default {
     },
     backToForm() {
       this.$emit('back');
+    },
+    showSnackbar(message) {
+      this.$buefy.snackbar.open({
+        message,
+        position: 'is-bottom',
+        actionText: null,
+        duration: 2500,
+      });
     },
   },
 };
