@@ -80,9 +80,11 @@ export default {
 
   methods: {
     copyToClipboard() {
-      this.terminalActive = false;
+      // Save content from div with generated Markdown code
       const content = document.querySelector('#content').innerHTML;
+      // It is a field used only to copying
       const input = document.querySelector('#input');
+
       try {
         input.setAttribute('type', 'text');
         input.value = content;
@@ -93,22 +95,22 @@ export default {
         // If copied, show snackbar
         this.showSnackbar('Content was successfully copied to clipboard.');
       } catch (e) {
-        // console.warn(e);
+        this.showSnackbar(`An error occured: ${e}`);
       }
     },
     download() {
+      // Save content from div with generated Markdown code
       const content = document.querySelector('#content').innerHTML;
-      // console.log('pobieranie');
+
       try {
         fileDownload(content, 'README.md');
 
-        // Wait 0.5 s
+        // Show snackbar after 500 ms if file was downloaded
         setTimeout(() => {
-          // If file was downloaded, show snackabr
           this.showSnackbar('File was successfully downloaded.');
         }, 500);
       } catch (e) {
-        // console.warn(e);
+        this.showSnackbar(`An error occured: ${e}`);
       }
     },
     backToForm() {
