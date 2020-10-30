@@ -114,6 +114,10 @@ export default {
       this.$emit('back');
     },
   },
+
+  beforeMount() {
+    window.scrollTo({ top: 0 });
+  },
 };
 </script>
 
