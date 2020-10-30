@@ -128,6 +128,15 @@ export default {
   width: 100vw;
   height: 100vh;
 
+    &::before {
+      width: 100%;
+      height: 35vh;
+      background: linear-gradient(to bottom, transparent 0%,#ffffff 100%);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      content: '';
+    }
     &-container {
       text-align: center;
     }
