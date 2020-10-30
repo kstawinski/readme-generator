@@ -75,7 +75,7 @@ export default {
     runCommand: String,
     buildCommand: String,
     license: String,
-    authorInfo: String,
+    authorInfo: Boolean,
   },
 
   methods: {
