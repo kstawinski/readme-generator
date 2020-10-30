@@ -92,7 +92,7 @@ export default {
 
         // If copied, show snackbar
         this.$buefy.snackbar.open({
-          message: 'Content successfully copied to clipboard.',
+          message: 'Content was successfully copied to clipboard.',
           position: 'is-bottom',
           actionText: null,
           duration: 2500,
