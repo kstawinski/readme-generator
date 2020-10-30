@@ -124,6 +124,9 @@ export default {
 <style lang="scss" scoped>
 .success {
   padding: 70px 0;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
 
     &-container {
       text-align: center;
