@@ -123,12 +123,6 @@ export default {
 
 <style lang="scss" scoped>
 .success {
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: #fff;
   padding: 70px 0;
 
     &-container {
@@ -144,12 +138,6 @@ export default {
       button:not(:last-child) {
         margin-right: 8px;
       }
-    }
-    &-alert {
-      font-weight: 500;
-      color: #62b762;
-      text-transform: uppercase;
-      padding-left: 10px;
     }
 }
 #input { opacity: 0; }
